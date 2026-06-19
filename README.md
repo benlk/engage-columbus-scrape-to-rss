@@ -53,15 +53,11 @@ To roll back a bad run: use `git log -- data/links.csv` to find the commit and `
 ## Local Development
 
 ```bash
-# Install dependencies
-pip3 install -r requirements.txt
+# Optional: validate PHP requirement metadata
+php -v
 
 # Run the scraper once
-python3 main.py
-
-# Run tests
-pip3 install pytest
-pytest
+php main.php
 ```
 
-Requires Python 3.12+
+Requires PHP 8.1+
