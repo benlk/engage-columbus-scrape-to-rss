@@ -1,4 +1,42 @@
 <?xml version="1.0"?>
-<ruleset name="Project Rules">
-	<rule ref="10up-Default" />
+<ruleset name="Project CLI Rules">
+	<description>Standalone CLI PHP rules with tabs and K&amp;R function braces.</description>
+
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>*/data/*</exclude-pattern>
+
+	<rule ref="PSR12">
+		<exclude name="Generic.WhiteSpace.DisallowTabIndent" />
+		<exclude name="Squiz.Functions.MultiLineFunctionDeclaration" />
+		<exclude name="PSR2.Methods.FunctionCallSignature" />
+	</rule>
+
+	<rule ref="Squiz.Commenting.FileComment" />
+	<rule ref="Squiz.Commenting.FunctionComment" />
+	<rule ref="WordPress.NamingConventions.ValidVariableName" />
+
+	<rule ref="Generic.WhiteSpace.ScopeIndent">
+		<properties>
+			<property name="tabIndent" value="true"/>
+			<property name="ignoreIndentationTokens" type="array">
+				<element value="T_COMMENT"/>
+				<element value="T_DOC_COMMENT_OPEN_TAG"/>
+			</property>
+		</properties>
+	</rule>
+
+	<rule ref="Generic.Functions.OpeningFunctionBraceKernighanRitchie">
+		<properties>
+			<property name="checkFunctions" value="true"/>
+			<property name="checkClosures" value="true"/>
+		</properties>
+	</rule>
+
+	<!-- Require spaces after opening parenthesis and before closing parenthesis in function calls -->
+	<rule ref="PEAR.Functions.FunctionCallSignature">
+		<properties>
+			<property name="requiredSpacesAfterOpen" value="1"/>
+			<property name="requiredSpacesBeforeClose" value="1"/>
+		</properties>
+	</rule>
 </ruleset>
