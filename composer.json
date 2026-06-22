@@ -15,7 +15,11 @@
   },
   "scripts": {
 		"lint": [
-			"phpcs ."
-		]
+			"phpcs -s ."		],
+		"lint-fix": [
+			"phpcbf ."
+		],
+		"lint-changed": [
+			"phpcs $(git diff --name-only --diff-filter=ACMRU HEAD | grep \\.php$)"		]
 	}
 }
