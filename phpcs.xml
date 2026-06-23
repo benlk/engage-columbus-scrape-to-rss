@@ -1,19 +1,30 @@
 <?xml version="1.0"?>
 <ruleset name="Project CLI Rules">
-	<description>Standalone CLI PHP rules with tabs and K&amp;R function braces.</description>
+	<description>Wordpress-like but without some Wordpressicisms.</description>
+	<arg name="tab-width" value="4"/>
 
 	<exclude-pattern>*/vendor/*</exclude-pattern>
 	<exclude-pattern>*/data/*</exclude-pattern>
 
-	<rule ref="PSR12">
+	<rule ref="PEAR">
 		<exclude name="Generic.WhiteSpace.DisallowTabIndent" />
 		<exclude name="Squiz.Functions.MultiLineFunctionDeclaration" />
-		<exclude name="PSR2.Methods.FunctionCallSignature" />
+		<exclude name="PEAR.Functions.FunctionCallSignature" />
+		<exclude name="Generic.Files.LineLength.TooLong" />
+		<exclude name="PEAR.NamingConventions.ValidFunctionName.FunctionNoCapital" />
+		<exclude name="PEAR.NamingConventions.ValidFunctionName.FunctionNameInvalid" />
+		<exclude name="PEAR.Functions.FunctionDeclaration.BraceOnSameLine" />
+		<exclude name="PEAR.Commenting.FileComment.MissingVersion" />
+		<exclude name="PEAR.Commenting.FileComment.MissingCategoryTag" />
+		<exclude name="PEAR.Commenting.FileComment.MissingPackageTag" />
+		<exclude name="PEAR.Commenting.FileComment.MissingAuthorTag" />
+		<exclude name="PEAR.Commenting.FileComment.MissingLicenseTag" />
+		<exclude name="PEAR.Commenting.FileComment.MissingLinkTag" />
+		<exclude name="Generic.Commenting.DocComment.NonParamGroup" />
 	</rule>
 
-	<rule ref="Squiz.Commenting.FileComment" />
-	<rule ref="Squiz.Commenting.FunctionComment" />
 	<rule ref="WordPress.NamingConventions.ValidVariableName" />
+	<rule ref="Generic.WhiteSpace.DisallowSpaceIndent" />
 
 	<rule ref="Generic.WhiteSpace.ScopeIndent">
 		<properties>
