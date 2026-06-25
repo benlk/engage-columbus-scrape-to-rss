@@ -1,42 +1,51 @@
 <?php
+/**
+ * URL normalization and domain filtering.
+ */
 
 declare(strict_types=1);
 
 const ALLOWED_DOMAIN = 'columbus.gov';
 const ALLOWED_SUFFIX = '.columbus.gov';
 
-function normalize_url(string $raw): ?string {
-    $raw = trim( $raw );
-    if ($raw === '') {
-        return null;
-    }
+/**
+ * Normalize a URL and filter to columbus.gov domain.
+ *
+ * @param  string $raw The raw URL to normalize.
+ * @return ?string Normalized URL, or null if rejected.
+ */
+function normalize_url( string $raw ): ?string {
+	$raw = trim( $raw );
+	if ($raw === '') {
+		return null;
+	}
 
-    $parts = @parse_url( $raw );
-    if ($parts === false) {
-        return null;
-    }
+	$parts = @parse_url( $raw );
+	if ($parts === false) {
+		return null;
+	}
 
-    $scheme = strtolower( (string) ($parts['scheme'] ?? '') );
-    if ($scheme !== 'http' && $scheme !== 'https') {
-        return null;
-    }
+	$scheme = strtolower( (string) ($parts['scheme'] ?? '') );
+	if ($scheme !== 'http' && $scheme !== 'https') {
+		return null;
+	}
 
-    $host = strtolower( (string) ($parts['host'] ?? '') );
-    if ($host === '') {
-        return null;
-    }
+	$host = strtolower( (string) ($parts['host'] ?? '') );
+	if ($host === '') {
+		return null;
+	}
 
-    if ($host !== ALLOWED_DOMAIN && !str_ends_with( $host, ALLOWED_SUFFIX )) {
-        return null;
-    }
+	if ($host !== ALLOWED_DOMAIN && !str_ends_with( $host, ALLOWED_SUFFIX )) {
+		return null;
+	}
 
-    $path = (string) ($parts['path'] ?? '');
-    if ($path !== '/' && $path !== '') {
-        $path = rtrim( $path, '/' );
-    }
-    if ($path === '') {
-        $path = '/';
-    }
+	$path = (string) ($parts['path'] ?? '');
+	if ($path !== '/' && $path !== '') {
+		$path = rtrim( $path, '/' );
+	}
+	if ($path === '') {
+		$path = '/';
+	}
 
-    return $scheme . '://' . $host . $path;
+	return $scheme . '://' . $host . $path;
 }
