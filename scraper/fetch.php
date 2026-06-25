@@ -32,7 +32,6 @@ function fetch_url( string $url ): ?string {
 		$body = curl_exec( $ch );
 		$status = (int) curl_getinfo( $ch, CURLINFO_RESPONSE_CODE );
 		$error = curl_error( $ch );
-		curl_close( $ch );
 
 		if (is_string( $body ) && $status >= 200 && $status < 300) {
 			return $body;
