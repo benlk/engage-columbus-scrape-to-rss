@@ -20,6 +20,11 @@ function normalize_url( string $raw ): ?string {
 		return null;
 	}
 
+	// Prepend domain to relative URLs starting with /
+	if (str_starts_with( $raw, '/' )) {
+		$raw = 'https://engage.columbus.gov' . $raw;
+	}
+
 	$parts = @parse_url( $raw );
 	if ($parts === false) {
 		return null;
