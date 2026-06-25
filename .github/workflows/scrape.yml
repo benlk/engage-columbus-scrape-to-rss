@@ -24,11 +24,21 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "8.3"
+          php-version: "8.5"
           coverage: none
 
       - name: Run scraper
         run: php main.php
+
+      - name: Store scraped content for debugging (on failure)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scrape-debug-${{ github.run_id }}
+          path: |
+            scraper-output.html
+            scraper-debug.log
+          retention-days: 30
 
       - name: Validate feed XML
         run: php -r '$xml = simplexml_load_file("feed.xml"); if ($xml === false) { fwrite(STDERR, "Invalid feed.xml\n"); exit(1);} echo "feed.xml is valid XML\n";'
@@ -45,4 +55,3 @@ jobs:
           else
             git commit -m "chore: update links and feed [skip ci]"
             git push
-          fi

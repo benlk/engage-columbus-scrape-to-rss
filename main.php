@@ -38,6 +38,10 @@ function run_scraper(): int {
 		return 1;
 	}
 
+	// Store raw HTML for debugging
+	file_put_contents( __DIR__ . '/scraper-output.html', $content );
+	fwrite( STDOUT, "Saved fetched content to scraper-output.html\n" );
+
 	$raw_pairs = parse_sitemap( $content );
 	fwrite( STDOUT, sprintf( "Extracted %d raw pairs from sitemap\n", count( $raw_pairs ) ) );
 
@@ -83,6 +87,12 @@ function run_scraper(): int {
 	fwrite( STDOUT, sprintf( "Feed written to %s\n", FEED_PATH ) );
 
 	fwrite( STDOUT, sprintf( "Run %s complete.\n", $run_id ) );
+
+	// Archive the debug log
+	if (file_exists( __DIR__ . '/scraper-output.html' )) {
+		rename( __DIR__ . '/scraper-output.html', __DIR__ . '/scraper-debug.log' );
+	}
+
 	return 0;
 }
 
