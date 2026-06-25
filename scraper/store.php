@@ -27,7 +27,7 @@ function ensure_csv_exists(string $path): void {
 	if ($fh === false) {
 		throw new RuntimeException( 'Unable to create CSV file: ' . $path );
 	}
-	fputcsv( $fh, CSV_FIELDS );
+	fputcsv( $fh, CSV_FIELDS, ',', '"', '\\' );
 	fclose( $fh );
 }
 
@@ -46,13 +46,13 @@ function load_known_urls( string $path ): array {
 		throw new RuntimeException( 'Unable to read CSV file: ' . $path );
 	}
 
-	$header = fgetcsv( $fh );
+	$header = fgetcsv( $fh, null, ',', '"', '\\' );
 	if ($header === false) {
 		fclose( $fh );
 		return $known;
 	}
 
-	while (($row = fgetcsv( $fh )) !== false) {
+	while (($row = fgetcsv( $fh, null, ',', '"', '\\' )) !== false) {
 		$mapped = array_combine( $header, $row );
 		if (!is_array( $mapped )) {
 			continue;
@@ -107,10 +107,13 @@ function append_new_rows( string $path, array $rows ): void {
 				(string) ($row['first_seen_utc'] ?? ''),
 				(string) ($row['source'] ?? 'sitemap'),
 				(string) ($row['run_id'] ?? ''),
-			]
+			],
+			',',
+			'"',
+			'\\'
 		);
 	}
 	fclose( $tmp_file );
 
-	rename( $tmp_file, $path );
+	rename( $tmp_path, $path );
 }
