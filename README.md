@@ -1,5 +1,7 @@
 # Engage Columbus Scrape-to-RSS
 
+**[-> subscribe to feed <-](https://raw.githubusercontent.com/benlk/engage-columbus-scrape-to-rss/main/feed.xml)**
+
 A GitHub Action that runs daily, scrapes the [Engage Columbus sitemap](https://engage.columbus.gov/sitemap), discovers new pages, and publishes an RSS feed of newly found links.
 
 ## How It Works
@@ -50,6 +52,18 @@ Only one run executes at a time (concurrency lock). A run that finds no new URLs
 
 To roll back a bad run: use `git log -- data/links.csv` to find the commit and `git revert` or `git checkout <sha> -- data/links.csv feed.xml` to restore a previous state.
 
+## AI usage statement
+
+This was almost entirely vibe-coded, using Github Copilot. The decision to use Copilot was made in order to see what's possible with a from-scratch project. 
+
+Lessons learned:
+
+- High-level project descriptions can be converted to functional requirements documents pretty easily.
+- Copilot defaults to Python for building Github Action scrapers.
+- Copilot defaults to PSR-12 when writing PHP.
+- Copilot can be convinced to obey your `phpcs.xml`, in time.
+- First-pass generated code often contains a number of archaicisms and bugs, which are only picked up after test-running the code and viewing the logs.
+
 ## Local Development
 
 ```bash
@@ -58,6 +72,7 @@ php -v
 
 # Run the scraper once
 php main.php
+# Diff, then commit changes to the scraped URLs.
 ```
 
 Requires PHP 8.1+

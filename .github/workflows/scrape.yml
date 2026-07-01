@@ -1,4 +1,4 @@
-name: Scrape Engage Columbus Sitemap
+name: Scrape engage.columbus.gov Sitemap
 
 on:
   schedule:
