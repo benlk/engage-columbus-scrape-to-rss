@@ -1,6 +1,7 @@
 name: Scrape engage.columbus.gov Sitemap
 run-name: "${{ github.actor }} is scraping engage.columbus.gov on ${{ github.event_name }}"
 on:
+  push:
   workflow_dispatch:
   schedule:
     - cron: "0 6 * * *" # Daily at 06:00 UTC
@@ -45,3 +46,4 @@ jobs:
             timestamp=$(date -u)
             git commit -m "chore: update links and feed ${timestamp}" || exit 
             git push
+          fi
