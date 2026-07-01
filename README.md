@@ -64,6 +64,10 @@ Lessons learned:
 - Copilot can be convinced to obey your `phpcs.xml`, in time.
 - First-pass generated code often contains a number of archaicisms and bugs, which are only picked up after test-running the code and viewing the logs.
 
+## License
+
+Because of the AI usage, I've chosen to license this in the public domain, under [The Unlicense](https://unlicense.org/)
+
 ## Local Development
 
 ```bash

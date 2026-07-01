@@ -2,6 +2,7 @@
   "name": "benlk/engage-columbus-scrape-to-rss",
   "description": "Daily Engage Columbus sitemap scraper that stores new URLs in CSV and publishes RSS.",
   "type": "project",
+  "license": "Unlicense",
   "require": {
     "php": ">=8.1"
   },
