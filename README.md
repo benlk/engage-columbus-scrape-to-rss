@@ -1,6 +1,6 @@
 # Engage Columbus Scrape-to-RSS
 
-**[-> subscribe to feed <-](https://github.com/benlk/engage-columbus-scrape-to-rss/blob/trunk/feed.xml)**
+**[-> subscribe to feed <-](https://raw.githubusercontent.com/benlk/engage-columbus-scrape-to-rss/refs/heads/trunk/feed.xml)**
 
 A GitHub Action that runs daily, scrapes the [Engage Columbus sitemap](https://engage.columbus.gov/sitemap), discovers new pages, and publishes an RSS feed of newly found links.
 
@@ -17,7 +17,7 @@ This project runs a daily scraper which:
 
 ## Feed
 
-The RSS feed is available at: https://github.com/benlk/engage-columbus-scrape-to-rss/blob/trunk/feed.xml
+The RSS feed is available at: https://raw.githubusercontent.com/benlk/engage-columbus-scrape-to-rss/refs/heads/trunk/feed.xml
 
 RSS item fields:
 
