@@ -1,3 +1,4 @@
 vendor/
+_site/
 scraper-output.html
 scraper-debug.log

@@ -4,12 +4,16 @@
   "type": "project",
   "license": "Unlicense",
   "require": {
-    "php": ">=8.1"
+    "php": ">=8.5",
+    "league/commonmark": "^2.7"
   },
   "require-dev": {
     "10up/phpcs-composer": "^3.0"
   },
   "config": {
+    "platform": {
+      "php": "8.5"
+    },
     "allow-plugins": {
       "dealerdirect/phpcodesniffer-composer-installer": true
     }
@@ -21,6 +25,12 @@
 			"phpcbf ."
 		],
 		"lint-changed": [
-			"phpcs $(git diff --name-only --diff-filter=ACMRU HEAD | grep \\.php$)"		]
+			"phpcs $(git diff --name-only --diff-filter=ACMRU HEAD | grep \\.php$)"
+    ],
+    "build": [
+      "mkdir -p _site",
+      "php index.php > _site/index.html",
+      "cp feed.xml style.css _site/"
+    ]
 	}
 }

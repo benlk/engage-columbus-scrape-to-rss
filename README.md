@@ -63,12 +63,15 @@ Lessons learned:
 - Copilot defaults to PSR-12 when writing PHP.
 - Copilot can be convinced to obey your `phpcs.xml`, in time.
 - First-pass generated code often contains a number of archaicisms and bugs, which are only picked up after test-running the code and viewing the logs.
+- First-pass generated `composer.json` and GitHub Actions _frequently_ refer to out-of-date versions of packages, and must be manually verified for current-ness. This is no doubt because of outdated training data.
 
 ## License
 
-Because of the AI usage, I've chosen to license this in the public domain, under [The Unlicense](https://unlicense.org/)
+Because of the AI usage, I've chosen to license this in the public domain, under [The Unlicense](https://unlicense.org/).
 
 ## Local Development
+
+### Run the Scraper
 
 ```bash
 # Optional: validate PHP requirement metadata
@@ -78,5 +81,12 @@ php -v
 php main.php
 # Diff, then commit changes to the scraped URLs.
 ```
+Requires PHP 8.5
 
-Requires PHP 8.1+
+### Build the site
+
+0. `composer install`
+1. `composer run build`
+2. `php -S localhost:8000 -t _site/` to start a local server in that folder
+
+GitHub Pages is deployed from the `trunk` branch by GitHub Actions. The Pages workflow also runs after successful scraper runs so feed updates committed by GitHub Actions are published.
