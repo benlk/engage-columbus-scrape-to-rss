@@ -1,0 +1,180 @@
+:root {
+	color-scheme: light;
+    --red: rgb(226, 28, 36);
+	--blue: #00539c;
+	--blue-dark: #003a8c;
+    --navy: #102a4d;
+	--ink: #000;
+	--line: #d6d6d6;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	background: #fff;
+	color: var(--ink);
+	font-size: 16px;
+	line-height: 1.625;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+a {
+	color: var(--blue);
+	text-decoration-color: currentColor;
+	text-underline-offset: 3px;
+}
+
+a:hover {
+	color: var(--blue-dark);
+}
+
+a:focus-visible {
+	outline: 3px solid var(--blue);
+	outline-offset: 3px;
+}
+
+.site-header {
+	border-bottom: 1px solid var(--line);
+	background: #fff;
+}
+
+.site-header__inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	max-width: 1100px;
+	min-height: 76px;
+	margin: auto;
+	padding: 1rem 2rem;
+}
+
+.site-name,
+.feed-link {
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.site-name {
+	color: var(--ink);
+	font-size: 1.5rem;
+}
+
+.site-name span {
+	color: var(--blue);
+}
+
+.feed-link {
+	padding: .6rem 1rem;
+	background: var(--blue);
+	color: #fff;
+	font-size: .875rem;
+}
+
+.feed-link:hover {
+	background: var(--blue-dark);
+	color: #fff;
+}
+
+.feed-link span {
+	color: inherit;
+	font-size: 1rem;
+}
+
+.content {
+	max-width: 860px;
+	margin: auto;
+	padding: 3.5rem 2rem 5rem;
+	overflow-wrap: anywhere;
+}
+
+h1,
+h2,
+h3 {
+	color: var(--ink);
+	line-height: 1.2;
+}
+
+h1 {
+	max-width: 20ch;
+	margin: 0 0 1.5rem;
+	font-size: 2.5rem;
+	font-weight: 700;
+}
+
+h2 {
+	margin: 3rem 0 1rem;
+	font-size: 2rem;
+}
+
+p, ul, ol, table, pre {
+	margin: 0 0 1.25rem;
+}
+
+li + li {
+	margin-top: .35rem;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: .95rem;
+}
+
+th, td {
+	padding: .7rem .8rem;
+	border-bottom: 1px solid var(--line);
+	text-align: left;
+	vertical-align: top;
+}
+
+th {
+	background: var(--navy);
+	color: #fff;
+}
+
+code {
+	font-size: .9em;
+}
+
+pre {
+	overflow-x: auto;
+	padding: 1rem;
+	background: #f3f3f3;
+	border-left: 4px solid var(--blue);
+}
+
+.site-footer {
+	padding: 2rem;
+	border-top: 1px solid var(--line);
+	background: #f3f3f3;
+	color: var(--ink);
+	font-size: .85rem;
+	font-weight: 600;
+}
+
+.site-footer div {
+	max-width: 1036px;
+	margin: auto;
+}
+
+@media (max-width: 600px) {
+	.site-header__inner {
+		padding: 1rem;
+	}
+
+	.content {
+		padding: 2.5rem 1rem 3.5rem;
+	}
+
+	h1 {
+		font-size: 2rem;
+	}
+
+	.site-footer {
+		padding: 1.5rem 1rem;
+	}
+}
